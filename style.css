@@ -1,0 +1,22 @@
+h1, p, button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#resultNum {
+    font-weight: 900;
+}
+
+input {
+    padding: 0.25%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.error-box50 {
+    margin-left: 8%;
+    width: 14%;
+}
