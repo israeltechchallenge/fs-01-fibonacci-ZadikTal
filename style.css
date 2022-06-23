@@ -1,0 +1,11 @@
+h1, p, button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#resultNum {
+    font-weight: 900;
+}
+
+input {
+    padding: 0.25%;
+}
