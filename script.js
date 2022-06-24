@@ -3,6 +3,17 @@ let inputField = document.querySelector("#sequenceInput");
 const errorDivPlaceholder = document.querySelector("#error-div-placeholder");
 const calcDiv = document.querySelector("#calc-div");
 let btn = document.querySelector("#resultBtn");
+const errorDivOver50 = document.createElement("div");
+errorDivOver50.innerHTML = "Can't be larger than 50";
+errorDivOver50.setAttribute("id", "error50");
+errorDivOver50.classList.add(
+  "bg-danger",
+  "border-danger",
+  "text-danger",
+  "bg-opacity-25",
+  "rounded-1",
+  "error-box50"
+);
 
 function fibcalc(sequence) {
   let url = "http://localhost:5050/fibonacci/" + sequence;
@@ -18,29 +29,25 @@ function fibcalc(sequence) {
       spinnerLoad.classList.add("d-none");
     })
     .catch((error) => {
-      cleanUpErrorMessege();
+      cleanUp();
       let errorDiv42 = document.createElement("div");
       errorDiv42.innerHTML = "Server Error: 42 is the meaning of life";
-      errorDiv42.classList.add(
-        "text-danger",
-        "ms-1",
-        "text-opacity-75",
-        "error-box42"
-      );
+      errorDiv42.classList.add("text-danger", "ms-1", "text-opacity-75");
       errorDiv42.setAttribute("id", "error42");
       calcDiv.appendChild(errorDiv42);
       spinnerLoad.classList.add("d-none");
     });
 }
 
-function cleanUpErrorMessege() {
+function cleanUp() {
+  document.getElementById("resultNum").innerHTML = "";
   try {
     inputField.classList.remove("border-danger", "text-danger");
   } catch {}
 
   try {
-    let error50 = document.getElementById("error50");
-    error50.parentElement.removeChild(error50);
+    let errorDiv52 = document.getElementById("error50");
+    errorDiv52.parentElement.removeChild(errorDiv52);
   } catch {}
 
   try {
@@ -50,27 +57,14 @@ function cleanUpErrorMessege() {
 }
 
 btn.addEventListener("click", function () {
-  cleanUpErrorMessege();
-
-  document.getElementById("resultNum").innerHTML = "";
+  cleanUp();
   let sequenceInput = document.getElementById("sequenceInput").value;
   spinnerLoad.classList.remove("d-none");
   if (sequenceInput > 50) {
     spinnerLoad.classList.add("d-none");
     inputField.classList.remove("border-dark", "border-opacity-25");
     inputField.classList.add("border-danger", "text-danger");
-    let errorDiv = document.createElement("div");
-    errorDiv.innerHTML = "Can't be larger than 50";
-    errorDiv.setAttribute("id", "error50");
-    errorDiv.classList.add(
-      "bg-danger",
-      "border-danger",
-      "text-danger",
-      "bg-opacity-25",
-      "rounded-1",
-      "error-box50"
-    );
-    errorDivPlaceholder.appendChild(errorDiv);
+    errorDivPlaceholder.appendChild(errorDivOver50);
   } else {
     if (sequenceInput > 0) {
       fibcalc(sequenceInput);
