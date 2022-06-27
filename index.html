@@ -27,11 +27,17 @@
                 class="ms-3 ps-3 rounded-1 border col-1 border-dark border-opacity-25">
             <button type="button" id="resultBtn" class="ms-3 rounded-1 btn btn-primary fs-6 text">Is</button>
             <p id="resultNum" class="ms-3 mb-0 text-decoration-underline font-weight-bold fs-4 text"></p>
-            <div class="spinner-border d-none" id="sppinner" role="status">
-                <span class="visually-hidden"></span>
-            </div>
         </div>
         <div id="error-div-placeholder"></div>
+        <div class="flex-column p-auto m-auto mt-5">
+            <div class="d-flex align-items-center">
+                <div id="resultsListTitle" class="display-3">Results</div>
+                <div class="spinner-border d-none ms-3 mt-2" id="sppinner" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+            <div id="resultsList" class="fs-5 mt-5"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
