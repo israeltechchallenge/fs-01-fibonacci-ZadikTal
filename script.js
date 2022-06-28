@@ -15,6 +15,8 @@ errorDivOver50.classList.add(
   "error-box50"
 );
 
+const checkBox = document.getElementById("checkbox");
+
 function fibcalc(sequence) {
   let url = "http://localhost:5050/fibonacci/" + sequence;
   fetch(url)
