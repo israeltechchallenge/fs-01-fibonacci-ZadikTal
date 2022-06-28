@@ -16,7 +16,6 @@ errorDivOver50.classList.add(
 );
 
 const checkBox = document.getElementById("checkbox");
-
 function fibcalc(sequence) {
   let url = "http://localhost:5050/fibonacci/" + sequence;
   fetch(url)
@@ -45,16 +44,31 @@ function cleanUp() {
   try {
     inputField.classList.remove("border-danger", "text-danger");
   } catch {}
-
   try {
     let errorDiv52 = document.getElementById("error50");
     errorDiv52.parentElement.removeChild(errorDiv52);
   } catch {}
-
   try {
     let error42 = document.getElementById("error42");
     error42.parentElement.removeChild(error42);
   } catch {}
+}
+
+function calculation(sequence) {
+  sequence = parseInt(sequence);
+  if (sequence === 0) {
+    console.log(0);
+    return (document.getElementById("resultNum").innerHTML = 0);
+  } else if (sequence === 1) {
+    return (document.getElementById("resultNum").innerHTML = 1);
+  } else {
+    let arr = [0, 1];
+    for (let i = 2; i <= sequence; i++) {
+      arr.push(arr[i - 2] + arr[i - 1]);
+    }
+    return (document.getElementById("resultNum").innerHTML =
+      arr[arr.length - 1]);
+  }
 }
 
 window.onload = () => calcList();
@@ -88,8 +102,12 @@ btn.addEventListener("click", function () {
     inputField.classList.add("border-danger", "text-danger");
     errorDivPlaceholder.appendChild(errorDivOver50);
   } else {
-    if (sequenceInput > 0) {
-      fibcalc(sequenceInput);
+    if (sequenceInput >= 0) {
+      if (checkBox.checked == true) {
+        fibcalc(sequenceInput);
+      } else {
+        calculation(sequenceInput);
+      }
     }
   }
   calcList();
