@@ -1,8 +1,8 @@
-let spinnerLoad = document.getElementById("sppinner");
-let inputField = document.querySelector("#sequenceInput");
+const spinnerLoad = document.getElementById("sppinner");
+const inputField = document.querySelector("#sequenceInput");
 const errorDivPlaceholder = document.querySelector("#error-div-placeholder");
 const calcDiv = document.querySelector("#calc-div");
-let btn = document.querySelector("#resultBtn");
+const btn = document.querySelector("#resultBtn");
 const errorDivOver50 = document.createElement("div");
 errorDivOver50.innerHTML = "Can't be larger than 50";
 errorDivOver50.setAttribute("id", "error50");
@@ -22,9 +22,9 @@ function fibcalc(sequence) {
     .then((response) => {
       if (response.ok) {
         return response.json();
-      }
-      throw new Error("Server Error: 42 is the meaning of life");
-    })
+      } 
+      throw new Error("Server Error: 42 is the meaning of life"); 
+    }) 
     .then((data) => {
       calcList();
       document.getElementById("resultNum").innerHTML = data["result"];
@@ -32,7 +32,7 @@ function fibcalc(sequence) {
     .catch((error) => {
       cleanUp();
       let errorDiv42 = document.createElement("div");
-      errorDiv42.innerHTML = "Server Error: 42 is the meaning of life";
+      errorDiv42.innerHTML = error.message;
       errorDiv42.classList.add("text-danger", "ms-1", "text-opacity-75");
       errorDiv42.setAttribute("id", "error42");
       calcDiv.appendChild(errorDiv42);
